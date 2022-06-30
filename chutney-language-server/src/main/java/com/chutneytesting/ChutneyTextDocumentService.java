@@ -35,6 +35,8 @@ public class ChutneyTextDocumentService implements TextDocumentService {
     public void didChange(DidChangeTextDocumentParams didChangeTextDocumentParams) {
         this.clientLogger.logMessage("Operation '" + "text/didChange" +
                 "' {fileUri: '" + didChangeTextDocumentParams.getTextDocument().getUri() + "'} Changed");
+        this.clientLogger.logMessage("CONTENT-CHANGE : <<<<<<<<<<" + didChangeTextDocumentParams.getContentChanges().get(0).getText() + " >>>>>>>");
+        // this.clientLogger.logMessage("RANGE-START : <<<<<<<<<<" + didChangeTextDocumentParams.getContentChanges().get(0).getRange().getStart().getLine());
     }
 
     @Override

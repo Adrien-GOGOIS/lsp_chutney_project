@@ -54,4 +54,5 @@ class FileCompletionSuggestionTest {
         Assertions.assertThat(content).containsAll(List.of(expectedTotoSuggestion, expectedTataSuggestion));
     }
 
+
 }
