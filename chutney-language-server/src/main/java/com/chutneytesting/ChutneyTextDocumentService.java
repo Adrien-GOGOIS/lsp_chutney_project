@@ -56,11 +56,12 @@ public class ChutneyTextDocumentService implements TextDocumentService {
         return CompletableFuture.supplyAsync(() -> {
             this.clientLogger.logMessage("Operation '" + "text/completion");
             this.clientLogger.logMessage("POSITION : " + position);
+
             CompletionItem completionItem = new CompletionItem();
-            completionItem.setLabel("Test completion item");
-            completionItem.setInsertText("Test");
-            completionItem.setDetail("Snippet");
+            completionItem.setInsertText("sayHello() {\n    print(\"hello\")\n}");
+            completionItem.setLabel("sayHello()");
             completionItem.setKind(CompletionItemKind.Snippet);
+            completionItem.setDetail("sayHello()\n this will say hello to the people");
             return Either.forLeft(List.of(completionItem));
         });
     }
