@@ -32,7 +32,7 @@ class FileCompletionSuggestionTest {
     }
 
     @Test
-    public void should_return_a_list_of_Proposal() {
+    public void should_return_a_list_of_Suggestion() {
         FileCompletionSuggestion sut = new FileCompletionSuggestion("completion.txt");
         List<Suggestion> content = sut.getSuggestionsList();
 
@@ -43,13 +43,13 @@ class FileCompletionSuggestionTest {
 
     // Test + Methode : Cherche une suggestion en fonction de l'argument
     @Test
-    public void should_return_a_suggestion_according_parameter() {
+    public void should_return_list_of_Suggestion_according_user_entry() {
         FileCompletionSuggestion sut = new FileCompletionSuggestion("completion.txt");
         String userEntry = "T";
         List<Suggestion> content = sut.getSuggestion(userEntry);
 
-        Suggestion expectedTotoSuggestion = new Suggestion("TATA", "TATALABEL", "TATADETAILS");
-        Suggestion expectedTataSuggestion = new Suggestion("TOTO", "TOTOLABEL", "TOTODETAILS");
+        Suggestion expectedTotoSuggestion = new Suggestion("TOTO", "TOTOLABEL", "TOTODETAILS");
+        Suggestion expectedTataSuggestion = new Suggestion("TATA", "TATALABEL", "TATADETAILS");
 
         Assertions.assertThat(content).containsAll(List.of(expectedTotoSuggestion, expectedTataSuggestion));
     }

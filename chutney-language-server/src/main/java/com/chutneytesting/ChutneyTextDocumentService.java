@@ -1,5 +1,6 @@
 package com.chutneytesting;
 
+import com.chutneytesting.infra.FileCompletionSuggestion;
 import org.eclipse.lsp4j.CompletionItem;
 import org.eclipse.lsp4j.CompletionItemKind;
 import org.eclipse.lsp4j.CompletionList;
@@ -35,8 +36,7 @@ public class ChutneyTextDocumentService implements TextDocumentService {
     public void didChange(DidChangeTextDocumentParams didChangeTextDocumentParams) {
         this.clientLogger.logMessage("Operation '" + "text/didChange" +
                 "' {fileUri: '" + didChangeTextDocumentParams.getTextDocument().getUri() + "'} Changed");
-        this.clientLogger.logMessage("CONTENT-CHANGE : <<<<<<<<<<" + didChangeTextDocumentParams.getContentChanges().get(0).getText() + " >>>>>>>");
-        // this.clientLogger.logMessage("RANGE-START : <<<<<<<<<<" + didChangeTextDocumentParams.getContentChanges().get(0).getRange().getStart().getLine());
+        // this.clientLogger.logMessage();
     }
 
     @Override
@@ -55,12 +55,15 @@ public class ChutneyTextDocumentService implements TextDocumentService {
     public CompletableFuture<Either<List<CompletionItem>, CompletionList>> completion(CompletionParams position) {
         return CompletableFuture.supplyAsync(() -> {
             this.clientLogger.logMessage("Operation '" + "text/completion");
+            this.clientLogger.logMessage("POSITION : " + position);
             CompletionItem completionItem = new CompletionItem();
             completionItem.setLabel("Test completion item");
             completionItem.setInsertText("Test");
             completionItem.setDetail("Snippet");
             completionItem.setKind(CompletionItemKind.Snippet);
-            return Either.forLeft(Arrays.asList(completionItem));
+            return Either.forLeft(List.of(completionItem));
         });
     }
+
+
 }

@@ -1,5 +1,8 @@
 package com.chutneytesting.infra;
 
+import org.eclipse.lsp4j.CompletionItem;
+import org.eclipse.lsp4j.CompletionItemKind;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -45,25 +48,25 @@ public class FileCompletionSuggestion {
     public List<Suggestion> getSuggestionsList() {
         List<Suggestion> suggestions = new ArrayList<>();
 
-            List<String> content = getFileLines();
+            List<String> fileLines = getFileLines();
 
-            for (String proposal : content) {
-                String[] proposalAttribute = proposal.split(",");
-                String insertText = proposalAttribute[0];
-                String label = proposalAttribute[1];
-                String details = proposalAttribute[2];
-                suggestions.add(new Suggestion(insertText, label, details));
+            for (String suggestion : fileLines) {
+                String[] suggestionAttribute = suggestion.split(",");
+                String insertText = suggestionAttribute[0];
+                String label = suggestionAttribute[1];
+                String details = suggestionAttribute[2];
+                Suggestion completeSuggestion = new Suggestion(insertText, label, details);
+                suggestions.add(completeSuggestion);
             }
 
         return suggestions;
-
     }
 
     public List<Suggestion> getSuggestion(String userEntry) {
         List<Suggestion> suggestionsList = getSuggestionsList();
         return suggestionsList
                 .stream()
-                .filter(suggestion -> suggestion.insertText.contains(userEntry))
+                .filter(suggestion -> suggestion.label.contains(userEntry))
                 .collect(Collectors.toList());
     }
 
