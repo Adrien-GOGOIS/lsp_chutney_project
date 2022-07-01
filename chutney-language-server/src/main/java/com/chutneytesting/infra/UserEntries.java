@@ -11,6 +11,7 @@ public class UserEntries {
     public static String getCharacter(CompletionParams position) {
         String line;
         try {
+            // TODO : Get entire word or expression instead of unique character
             line = Files.readAllLines(Paths.get(position.getTextDocument().getUri())).get(position.getPosition().getLine());
         } catch (IOException e) {
             throw new RuntimeException(e);
