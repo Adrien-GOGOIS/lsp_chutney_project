@@ -8,16 +8,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-class SuggestionIntoCompletionItemConverterTest {
+class SuggestionMapperTest {
 
     @Test
     public void should_take_a_list_of_Suggestion_and_return_list_of_CompletionItem() {
         List<Suggestion> suggestions = new ArrayList<>();
         suggestions.add(new Suggestion("TOTO", "TOTOLABEL", "TOTODETAILS"));
         suggestions.add(new Suggestion("TATA", "TATALABEL", "TATADETAILS"));
-        SuggestionIntoCompletionItemConverter converter = new SuggestionIntoCompletionItemConverter();
+        SuggestionMapper converter = new SuggestionMapper();
 
-        List<CompletionItem> convertedList = converter.convert(suggestions);
+        List<CompletionItem> convertedList = converter.toCompletionItem(suggestions);
 
         List<CompletionItem> exampleList = new ArrayList<>();
         CompletionItem firstItem = new CompletionItem("TOTOLABEL");

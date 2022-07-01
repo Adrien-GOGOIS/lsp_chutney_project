@@ -5,9 +5,9 @@ import org.eclipse.lsp4j.CompletionItem;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SuggestionIntoCompletionItemConverter {
+public class SuggestionMapper {
 
-    public List<CompletionItem> convert(List<Suggestion> suggestions) {
+    public static List<CompletionItem> toCompletionItem(List<Suggestion> suggestions) {
         List<CompletionItem> convertedList = new ArrayList<>();
         for (Suggestion suggestion : suggestions) {
             CompletionItem completionItem = new CompletionItem(suggestion.label);

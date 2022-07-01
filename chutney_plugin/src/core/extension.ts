@@ -71,7 +71,7 @@ export class ChutneyExtension {
 function getServerOptions() {
   //Change the project home accordingly.
   const PROJECT_HOME = "/Users/adriengogois/Desktop";
-  const LS_LIB = "lsp-chutney/chutney-language-server/language_server_lib/*";
+  const LS_LIB = "lsp-chutney/chutney-language-server/target/lang-server-0.0.1-SNAPSHOT-jar-with-dependencies.jar";
   const LS_HOME = path.join(PROJECT_HOME, LS_LIB);
   const JAVA_HOME = process.env.JAVA_HOME;
 
